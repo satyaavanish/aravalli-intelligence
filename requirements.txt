@@ -1,0 +1,8 @@
+fastapi==0.133.0
+uvicorn==0.41.0
+earthengine-api==1.7.15
+numpy==2.2.6
+scikit-learn==1.8.0
+google-auth
+google-auth-httplib2
+google-api-python-client
