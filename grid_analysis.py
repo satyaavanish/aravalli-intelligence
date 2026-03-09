@@ -1,6 +1,6 @@
- 
-
 import ee
+import os
+import json
 import numpy as np
 from sklearn.ensemble import IsolationForest
 from sklearn.neighbors import LocalOutlierFactor
@@ -9,9 +9,26 @@ import ruptures as rpt
 from sklearn.preprocessing import StandardScaler
 from datetime import datetime, timedelta
 
-ee.Initialize(project="aravalli-488205")
+
+# =========================================
+# Google Earth Engine Authentication
+# =========================================
+
+SERVICE_ACCOUNT = os.getenv("EE_SERVICE_ACCOUNT")
+PRIVATE_KEY = os.getenv("EE_PRIVATE_KEY")
+
+if SERVICE_ACCOUNT and PRIVATE_KEY:
+    credentials = ee.ServiceAccountCredentials(
+        SERVICE_ACCOUNT,
+        key_data=json.loads(PRIVATE_KEY)
+    )
+    ee.Initialize(credentials, project="aravalli-488205")
+else:
+    # fallback for local development
+    ee.Initialize(project="aravalli-488205")
 
  
+
 region = ee.Geometry.Rectangle([72.5, 26.5, 77.5, 29.5])
 
 # ── LULC datasets 
