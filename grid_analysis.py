@@ -19,9 +19,9 @@ PRIVATE_KEY = os.getenv("EE_PRIVATE_KEY")
 
 if SERVICE_ACCOUNT and PRIVATE_KEY:
     credentials = ee.ServiceAccountCredentials(
-        SERVICE_ACCOUNT,
-        key_data=json.loads(PRIVATE_KEY)
-    )
+    SERVICE_ACCOUNT,
+    key_data=PRIVATE_KEY
+)
     ee.Initialize(credentials, project="aravalli-488205")
 else:
     # fallback for local development
