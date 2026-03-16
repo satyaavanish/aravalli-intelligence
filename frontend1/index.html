@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ARAVALLI WATCH</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            overflow: hidden;
+            background: black;
+        }
+
+        .background-video {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -2;
+        }
+
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.4);
+            z-index: -1;
+        }
+
+        /* POSITIONED TO THE BOTTOM-RIGHT */
+        .content {
+            position: absolute;
+            bottom: 50px;   /* Distance from bottom */
+            right: 8%;      /* Adjusted to move it slightly right of center */
+            z-index: 10;
+        }
+
+        .get-started {
+            padding: 18px 55px;
+            font-size: 20px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            border: none;
+            border-radius: 50px; 
+            color: white;
+            cursor: pointer;
+            background: linear-gradient(135deg, #22c55e, #16a34a);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            animation: pulse 2.5s infinite;
+        }
+
+        .get-started:hover {
+            transform: translateY(-5px) scale(1.03);
+            box-shadow: 0 15px 40px rgba(34, 197, 94, 0.6);
+        }
+
+        .get-started:active {
+            transform: scale(0.96);
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 0 10px rgba(34, 197, 94, 0.3); }
+            50% { box-shadow: 0 0 25px rgba(34, 197, 94, 0.7); }
+            100% { box-shadow: 0 0 10px rgba(34, 197, 94, 0.3); }
+        }
+    </style>
+</head>
+<body>
+
+    <video autoplay muted loop playsinline class="background-video">
+        <source src="video.mp4" type="video/mp4">
+    </video>
+
+    <div class="overlay"></div>
+
+    <div class="content">
+        <a href="http://localhost:8501/" target="_self" style="text-decoration: none;">
+            <button class="get-started">Get Started</button>
+        </a>
+    </div>
+
+</body>
+</html>
